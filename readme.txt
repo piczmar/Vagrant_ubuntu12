@@ -45,6 +45,12 @@ http://docs.vagrantup.com/v2/getting-started/share.html
 	
 12. Multiple machines
 http://docs.vagrantup.com/v2/multi-machine/index.html
+
+13. Snapshoting
+http://priyaaank.tumblr.com/post/50707609769/snapshotting-vagrant
+
+	vagrant plugin install vagrant-vbox-snapshot
+	vagrant snapshot <vm name, e.g. default - same as in Vagrant file> <snapshot name>
 	
 References:
 1. Nice presentation how to automate development & operations with Vagrant & Chef:
