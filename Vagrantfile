@@ -27,7 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   
   config.vm.network :forwarded_port, host: 4567, guest: 80
-  
+  config.vm.network :forwarded_port, host: 27018, guest: 27017
   
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -75,6 +75,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   config.vm.provision :shell, :path => "bootstrap.sh"
   
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path ="cookbooks"
+    chef.add_recipe "git"
+    chef.add_recipe "mongodb::10gen_repo"
+    chef.add_recipe "vim"
+    chef.add_recipe "curl"
+    chef.add_recipe "apt"
+    chef.add_recipe "build-essential"
+  end
   
   # You can also configure and bootstrap a client to an existing
   # policy server:
